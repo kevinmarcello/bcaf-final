@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.8">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_baseline_directions_bus_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="0.2">
+            <TextView
+                android:id="@+id/codeBus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Code bus"
+                android:textColor="@color/black"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"/>
+
+    <TextView
+        android:id="@+id/agencyBus"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="4dip"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="nama agency"/>
+    <TextView
+        android:id="@+id/seatBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="2dip"
+        android:text="Seat Capacity"/>
+    <TextView
+        android:id="@+id/detailAgencyBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="2dip"
+        android:text="Detail Agency"/>
+
+
+</LinearLayout>

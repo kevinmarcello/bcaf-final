@@ -6,20 +6,20 @@ import java.util.ArrayList;
 
 public class UserRegister {
     @SerializedName("email")
-
     private String email;
+
     @SerializedName("firstName")
-
     private String firstName;
+
     @SerializedName("lastName")
-
     private String lastName;
+
     @SerializedName("mobileNumber")
-
     private String mobileNumber;
-    @SerializedName("password")
 
+    @SerializedName("password")
     private String password;
+
     @SerializedName("role")
 
     private ArrayList<String> role = null;

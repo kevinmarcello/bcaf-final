@@ -195,6 +195,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public void chagePass(){
+
+    }
+
     //Get Data Retrofit
     private void generateUserList() {
         int lengthRoles = listUser.getRoles().size();

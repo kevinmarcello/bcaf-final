@@ -1,38 +1,25 @@
 package com.bcaf.bus.controller;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.ArrayMap;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bcaf.bus.R;
 import com.bcaf.bus.model.register.UserRegister;
-import com.bcaf.bus.model.user.ResponseUser;
 import com.bcaf.bus.model.user.User;
 import com.bcaf.bus.network.ApiClient;
 import com.bcaf.bus.network.BaseApiService;
-import com.bcaf.bus.network.RetrofitInstance;
 import com.bcaf.bus.session.MySession;
 import com.bcaf.bus.utils.MyUtils;
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -78,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                         User responRegister = response.body();
                         Log.d("dedi2", String.valueOf(response.code()));
                         if(responRegister != null){
+                            Toast.makeText(RegisterActivity.this,"User Berhasil dibuat", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                             startActivity(i);
                         }else{

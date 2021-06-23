@@ -23,6 +23,9 @@ public interface BaseApiService {
     @POST("auth/register")
     Call<User> register(@Body UserRegister userRegister);
 
+    @POST("user/changePassword")
+    Call<User> changePassword(@Body RequestBody requestBody);
+
     @GET("bus")
     Call<List<Bus>> getBus();
 

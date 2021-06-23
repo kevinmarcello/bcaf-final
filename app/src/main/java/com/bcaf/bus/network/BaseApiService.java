@@ -26,6 +26,9 @@ public interface BaseApiService {
     @POST("user/changePassword")
     Call<User> changePassword(@Body RequestBody requestBody);
 
+    @POST("user/update")
+    Call<User> updateUser(@Body RequestBody requestBody);
+
     @GET("bus")
     Call<List<Bus>> getBus();
 

@@ -100,7 +100,7 @@
                         android:layout_weight="1">
 
                         <EditText
-                            android:id="@+id/viewNamaDepan"
+                            android:id="@+id/updateFirstName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
                         <EditText
-                            android:id="@+id/viewNamaBelakang"
+                            android:id="@+id/updateLastName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
@@ -162,7 +162,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
                         <EditText
-                            android:id="@+id/viewEmail"
+                            android:id="@+id/updateEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
@@ -193,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
                         <EditText
-                            android:id="@+id/viewMobileNo"
+                            android:id="@+id/updateMobileNo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
@@ -202,7 +202,12 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
+                <Button
+                    style="@style/loginButton"
+                    android:id="@+id/btn_UpdateProfile"
+                    android:text="Submit"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/loginViewsMargin"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

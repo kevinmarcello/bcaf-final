@@ -94,6 +94,9 @@ public class ChangePasswordFragment extends Fragment {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.body()!=null){
                     Toast.makeText(getActivity(),"Password sudah terganti", Toast.LENGTH_SHORT).show();
+                    Fragment fragment = null;
+                    fragment = new ChangePasswordFragment();
+                    loadFragment(new ChangePasswordFragment());
                 }
             }
 
@@ -104,4 +107,15 @@ public class ChangePasswordFragment extends Fragment {
         });
 
     }
+
+    private boolean loadFragment(Fragment fragment){
+        if (fragment != null) {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.main_frame, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
 }

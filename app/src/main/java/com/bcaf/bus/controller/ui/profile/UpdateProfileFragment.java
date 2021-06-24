@@ -34,7 +34,7 @@ public class UpdateProfileFragment extends Fragment {
     private View root;
     private Button bSubmit;
     private MySession session;
-    private String Password1Holder, Password2Holder;
+    private String EmailHolder, MobileNoHolder, FirstNameHolder, LastNameHolder;
     private EditText FirstName,LastName,Email,MobileNo;
     private BaseApiService baseApiService;
     private String xToken = "";
@@ -51,7 +51,6 @@ public class UpdateProfileFragment extends Fragment {
 
         FirstName = root.findViewById(R.id.updateFirstName);
         LastName = root.findViewById(R.id.updateLastName);
-        Email = root.findViewById(R.id.updateEmail);
         MobileNo = root.findViewById(R.id.updateMobileNo);
         bSubmit = root.findViewById(R.id.btn_UpdateProfile);
 
@@ -62,15 +61,11 @@ public class UpdateProfileFragment extends Fragment {
         String sLastName = sUsernya.get(MySession.KEY_LAST_NAME);
         String sMobileNumber = sUsernya.get(MySession.KEY_MOBILE_NUMBER);
 
-        Log.d("firstname", sFirstName);
-        Log.d("sEmail", sEmail);
-
-        Email.setText("Test Email");
         FirstName.setText(sFirstName);
         LastName.setText(sLastName);
         MobileNo.setText(sMobileNumber);
 
-        Log.wtf("myTOken",sToken);
+
         baseApiService = RetrofitInstance.getRetrofitInstance(""+sToken).create(BaseApiService.class);
         bSubmit = root.findViewById(R.id.btn_UpdateProfile);
         bSubmit.setOnClickListener(view -> updateProfile());
@@ -79,28 +74,49 @@ public class UpdateProfileFragment extends Fragment {
     }
 
     private void updateProfile(){
+
+        MobileNoHolder = MobileNo.getText().toString();
+        FirstNameHolder = FirstName.getText().toString();
+        LastNameHolder = LastName.getText().toString();
+
+        Log.wtf("Holder",MobileNoHolder + FirstNameHolder + LastNameHolder);
+
         Map<String, Object> jsonParams = new ArrayMap<>();
-        jsonParams.put("firstName", FirstName.getText().toString());
-        jsonParams.put("lastname", LastName.getText().toString());
-        jsonParams.put("mobile Number", MobileNo.getText().toString());
+        jsonParams.put("firstName", FirstNameHolder);
+        jsonParams.put("lastName", LastNameHolder);
+        jsonParams.put("mobileNumber",MobileNoHolder );
+
+        String error = jsonParams.toString();
+//        String error2 = jsonParams.get("lastName").toString();
+//        String error3 = jsonParams.get("mobileNumber").toString();
+
+        Log.wtf("firstname = ",  error);
+//        Log.wtf("lastname = ",  error2);
+//        Log.wtf("mob = ",  error3);
 
         RequestBody body = RequestBody.create(
                 MediaType.parse("application/json; charset=utf-8"),(
                         new JSONObject(jsonParams)).toString());
 
-        Call<User> userUpdate = baseApiService.changePassword(body);
+        Call<User> userUpdate = baseApiService.updateUser(body);
         userUpdate.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.body()!=null){
+                    String xfirstName  = response.body().getFirstName();
+                    String xlastName  = response.body().getLastName();
+                    String xmobileNumber  = response.body().getMobileNumber();
+                    session.userUpdateSession(xfirstName, xlastName, xmobileNumber);
+
                     Toast.makeText(getActivity(),"Profile sudah terganti", Toast.LENGTH_SHORT).show();
                     Fragment fragment = null;
-                    fragment = new ChangePasswordFragment();
-                    loadFragment(new ChangePasswordFragment());
+                    fragment = new ProfileFragment();
+                    loadFragment(new ProfileFragment());
                 }
 
                 else{
-                    Log.wtf("error input 1 = ", response.message() + response.body());
+                    Log.wtf("error input 1 = ", response.message() + response.body() + response.raw());
+                    Log.d("Json =  ",body.toString());
                     Toast.makeText(getActivity(),"Error" + response.message(), Toast.LENGTH_SHORT).show();
                     Log.wtf("error input = ", response.message() + response.body());
                 }

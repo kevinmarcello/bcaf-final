@@ -62,6 +62,13 @@ public class MySession {
         }
     }
 
+    public void userUpdateSession(String first_name, String last_name,String mobile_number){
+        editor.putString(KEY_FIRST_NAME, first_name);
+        editor.putString(KEY_LAST_NAME, last_name);
+        editor.putString(KEY_MOBILE_NUMBER, mobile_number);
+        editor.commit();
+    }
+
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<>();
 

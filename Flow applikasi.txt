@@ -1,0 +1,9 @@
+alur applikasi
+1. masuk ke splash
+2. login / register user
+3. masuk ke halaman user (ada 4)
+3.1 - Home : ada banner
+3.2 - Profile : ada tampilan info user, dan bisa ganti password + update profile (ganti nama & no telpon)
+3.3 - Bus : ada tampilan list bus yang ada
+3.4 - Agency : tampilan list agency yang ada
+4. Logout di kanan atas
